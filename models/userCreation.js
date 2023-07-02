@@ -50,7 +50,7 @@ export async function checkEmail(email) {
     const dbApi = process.env.DB_API;
     const apiUrl = `${dbApi}/api/db/read`;
 
-    // DynamoDB params for search
+    // DynamoDB params for search 
     const payload = {
       TableName: "users",
       FilterExpression: "email = :field",
@@ -61,7 +61,7 @@ export async function checkEmail(email) {
 
     const response = await axios.get(apiUrl, { params: payload });
     const total = response.data.Count;
-    
+
     if (total >= 1) {
       return { valid: false, message: "User already exists." };
     }
